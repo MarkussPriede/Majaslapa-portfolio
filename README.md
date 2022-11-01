@@ -1,2 +1,2 @@
 # Majaslapa-portfolio
-markusspriede.github.io
+https://markusspriede.github.io/Majaslapa-portfolio/
