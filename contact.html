@@ -23,32 +23,32 @@
         <div class="contact-box">
             <div class="contact-left">
                 <h3>Sūti vēstuli</h3>
-                <form>
+                <form onsubmit="sendEmail(); reset(); return false;">
 
                     <div class="input-row">
                         <div class="input-group">
                             <label>Vārds</label>
-                            <input type="text" placeholder="Jānis Bērziņš">
+                            <input type="text" id="name" placeholder="piem. Jānis Bērziņš">
                         </div>
                         <div class="input-group">
                             <label>Tel.nr</label>
-                            <input type="text" placeholder="26702882">
+                            <input type="text" id="phone" placeholder="piem. 26702882">
                         </div>
                     </div>
 
                     <div class="input-row">
                         <div class="input-group">
                             <label>E-Pasts</label>
-                            <input type="email" placeholder="janisberzins@gmail.com">
+                            <input type="email" id="email" placeholder="piem. janisberzins@gmail.com">
                         </div>
                         <div class="input-group">
                             <label>Temats</label>
-                            <input type="text" placeholder="Projekta izstrāde">
+                            <input type="text" id="subject" placeholder="piem. Projekta izstrāde">
                         </div>
                     </div>
 
                     <label>Message</label>
-                    <textarea rows="5" placeholder="Jūsu ziņojums"></textarea>
+                    <textarea rows="5" id="message" placeholder="Jūsu ziņojums"></textarea>
                     
                     <button type="submit">Sūtīt</button>
                 </form>
@@ -70,6 +70,22 @@
         </div>
     </div>
 
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                SecureToken: "6a3d4e52-12fc-4e54-af80-a5956e465844",
+                To : 'markusspriede@inbox.lv',
+                From : 'playkonts2@gmail.com',
+                Subject : "Jauna ziņa no portfilio kontaktformas",
+                Body : "Vārds: " + document.getElementById("name").value
+                    + "<br> E-Pasts: " + document.getElementById("email").value
+                    + "<br> Tel.nr: " + document.getElementById("phone").value
+                    + "<br> Ziņa: " + document.getElementById("message").value
+            }).then(
+            message => alert("Ziņa ir nosūtīta!")
+);
+        }
+    </script>
 </body>
 </html>
